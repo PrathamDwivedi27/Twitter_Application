@@ -2,8 +2,8 @@ import Tweet from '../models/tweet.js'
 import CrudRepository from './crud-repository.js';
 
 class TweetRepository{
-    constructor(){
-        super(Tweet);
+    constructor(Tweet){
+        
     }
 
     async create(data){
@@ -28,6 +28,16 @@ class TweetRepository{
     async getAll(offset,limit){             //sirf find karoge to saare aa jayenge
         try {
             const tweet=await Tweet.find().skip(offset).limit(limit);
+            return tweet;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async find(id){
+        try {
+            const tweet=await Tweet.findById(id).populate({path:'likes'});  //It should always be attached to mongoose query object
+            console.log(tweet);
             return tweet;
         } catch (error) {
             console.log(error);
