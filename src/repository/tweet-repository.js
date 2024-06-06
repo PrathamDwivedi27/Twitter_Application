@@ -1,6 +1,11 @@
 import Tweet from '../models/tweet.js'
+import CrudRepository from './crud-repository.js';
 
 class TweetRepository{
+    constructor(){
+        super(Tweet);
+    }
+
     async create(data){
         try {
             const tweet=await Tweet.create(data);
@@ -10,32 +15,6 @@ class TweetRepository{
         }
     }
 
-    async get(id){                                          //when you will use get for comments it will only show you object model not whole comment 
-        try {
-            const tweet=await Tweet.findById(id);
-            return tweet;
-        } catch (error) {
-            console.log (error);
-        }
-    }
-
-    async update(tweetId,data){
-        try {
-            const tweet=await Tweet.findByIdAndUpdate(tweetId,data,{new:true});
-            return tweet;
-        } catch (error) {
-            console.log (error);
-        }
-    }
-
-    async destroy(id){
-        try {
-            const tweet=await Tweet.findByIdAndRemove(id);
-            return tweet;
-        } catch (error) {
-            console.log (error);
-        }
-    }
 
     async getWithComments(id){
         try {
