@@ -1,21 +1,18 @@
-const express=require('express');
+import express from 'express';
 const app=express();
-const connect=require('./config/database');
+import {connect} from './config/database.js';
 
-const {TweetRepository}=require('./repository/index');
-const TweetService=require('./services/tweet-service');
-const Comment=require('./models/comment')
+import service from './services/tweet-service.js';
 
 app.listen(3000,async ()=>{
     console.log("Server started at 3000");
     await connect();
     console.log('Database is connected');
 
-    let service=new TweetService();
-    const tweet=await service.create({
-        content:'This is #Fun , #development. But I love to do #open_src '
+    const ser=new service();
+    await ser.create({
+        content:'Done with #refactoring #coding'
     })
-    // console.log(tweet);
 
     
     

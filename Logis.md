@@ -18,3 +18,7 @@
             tweets:[]
         }
     ])   To create hashtags directly with repository
+
+3) Logic creation seekho bahut important hai . Kaise purane tweets liye jaa rhe hai kaise include aur update kar rhe hai.
+4) Now we are converting to ES6 modules.
+5) 
