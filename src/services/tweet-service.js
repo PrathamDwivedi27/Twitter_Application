@@ -9,7 +9,9 @@ class TweetService{
 
     async create(data){
         const content =data.content;
-        const tags=content.match(/#[a-zA-Z0-9_]+/g).map((tag)=>tag.substring(1));  //to identify hashtags. It will give # also to remove that
+        console.log(content);
+        const tags=content.match(/#[a-zA-Z0-9_]+/g).map((tag)=>tag.substring(1))    //to identify hashtags. It will give # also to remove that
+        .map((tag)=>tag.toLowerCase());  // It is necessary to do it because coding and coDinG
         
         const tweet=await this.tweetRepository.create(data);
 
