@@ -17,8 +17,13 @@ class TweetRepository{
 
 
     async getWithComments(id){
-        try {
-            const tweet=await Tweet.findById(id).populate({path:'comment'}).lean();     //if you dont do lean it will be return as moongose object not js object. It is not necessary its just an optimised thing to do .       //becoz its an array that why we have to do like this
+        try {                                                       //comments jo tum schema mein likhe ho
+            const tweet=await Tweet.findById(id).populate({
+                path:'comments',
+                populate:{
+                    path:'comments'             //I want ki tweet ke upar jo comment hai wo bhi postman ke comment mein dikhaye jab get Tweet kare to isliye nested populate
+                }
+            }).lean();     //if you dont do lean it will be return as moongose object not js object. It is not necessary its just an optimised thing to do .       //becoz its an array that why we have to do like this
             return tweet;
         } catch (error) {
             console.log(error);

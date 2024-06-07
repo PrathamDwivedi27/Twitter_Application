@@ -8,7 +8,7 @@ class LikeService{
     }
 
     async toggleLike(modelId,modelType,userId){
-        console.log(modelId);
+        // console.log(modelId);
         if(modelType=='Tweet'){
             var likeable=await this.tweetRepository.find(modelId);         //pehle se jo likes hai wo bhi aa jaaye.
             console.log(likeable);

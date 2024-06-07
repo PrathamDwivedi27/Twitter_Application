@@ -19,7 +19,13 @@ const commentSchema=new  mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         refPath:'onModel',
         required:true
-    }
+    },
+    comments:[                                   //comments for comment
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Comment'
+        }
+    ]
    
     
 },{
