@@ -11,7 +11,7 @@ const likeSchema=new mongoose.Schema({
         required:true,
         refPath:'onModel'               //jaise peeche ref use kar rhe the na hashtag mein ki tweet se reference hai . waise hi jab jyade cheez pe reference dena ho to refpath. Hum jo bhi like karenge uska tweetid ya comment id store karenge.
     },
-    user:{
+    userId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',
         required:true
